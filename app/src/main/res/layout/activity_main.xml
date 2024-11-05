@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textSize="40sp"
             android:padding="24dp"
-            android:text="LocationFinder"
+            android:text="Location Finder"
             android:layout_gravity="center"/>
 
         <Button
