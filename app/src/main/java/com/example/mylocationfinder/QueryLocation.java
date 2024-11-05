@@ -77,15 +77,8 @@ public class QueryLocation extends AppCompatActivity {
                     cursor.close();
                 } else {
                     // Log the error for debugging
-                    tvResult.setText("Location not found. Please check address format.");
+                    tvResult.setText("No locations found. Please check address format or try a different query.");
                     Log.d("MainActivity", "Queried Address: " + address);
-                    // Optional: Display all entries for debugging
-                    Cursor allEntries = dbHelper.getAllLocations(); // Assuming you add this method in SQLiteHelper
-                    while (allEntries.moveToNext()) {
-                        String dbAddress = allEntries.getString(allEntries.getColumnIndexOrThrow("address"));
-                        Log.d("MainActivity", "DB Entry - Address: " + dbAddress);
-                    }
-                    allEntries.close();
                 }
             }
         });
