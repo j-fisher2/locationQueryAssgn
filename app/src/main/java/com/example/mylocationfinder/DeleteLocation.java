@@ -50,6 +50,9 @@ public class DeleteLocation extends AppCompatActivity {
                     }
                     int id = Integer.parseInt(idText); // Parse the input to an integer
                     dbHelper.deleteLocation(id);
+                    etId.setText("");
+                    showToast("Success");
+                    tvResult.setText("Successfully Deleted.");
             }
         });
         btnReturn.setOnClickListener(new View.OnClickListener() {
