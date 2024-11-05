@@ -45,8 +45,9 @@ public class QueryLocation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String address = etAddress.getText().toString().trim();
-                if(address.isEmpty()){
+                if(address.isEmpty() || address.length() == 0){
                     tvResult.setText("Enter an address");
+                    return;
                 }
                 Cursor cursor = dbHelper.getLocation(address);
 
