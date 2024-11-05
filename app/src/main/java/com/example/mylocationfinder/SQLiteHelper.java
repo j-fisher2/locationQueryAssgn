@@ -52,11 +52,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     // Get location by address
     public Cursor getLocation(String address) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(TABLE_LOCATION,
+        return db.query(
+                TABLE_LOCATION,
                 null,
-                COLUMN_ADDRESS + " = ? COLLATE NOCASE",
-                new String[]{address},
-                null, null, null);
+                COLUMN_ADDRESS + " LIKE ? COLLATE NOCASE",
+                new String[]{"%" + address + "%"},
+                null, null, null
+        );
     }
 
     // Update a location

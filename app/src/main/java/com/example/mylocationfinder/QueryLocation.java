@@ -51,12 +51,28 @@ public class QueryLocation extends AppCompatActivity {
                 Cursor cursor = dbHelper.getLocation(address);
 
                 if (cursor != null && cursor.moveToFirst()) {
-                    // Address matched; retrieve latitude and longitude
-                    double latitude = cursor.getDouble(cursor.getColumnIndexOrThrow("latitude"));
-                    double longitude = cursor.getDouble(cursor.getColumnIndexOrThrow("longitude"));
-                    int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
-                    tvResult.setText("Latitude: " + latitude + ", Longitude: " + longitude);
-                    idResult.setText("ID: "+ id);
+                    StringBuilder resultBuilder = new StringBuilder();
+                    StringBuilder idBuilder = new StringBuilder();
+
+                    do {
+                        // Retrieve latitude, longitude, and id for each row
+                        String addressRow = cursor.getString(cursor.getColumnIndexOrThrow("address"));
+                        double latitude = cursor.getDouble(cursor.getColumnIndexOrThrow("latitude"));
+                        double longitude = cursor.getDouble(cursor.getColumnIndexOrThrow("longitude"));
+                        int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+
+                        // Append each result to the result strings
+                        resultBuilder.append(addressRow+"\n").append("Latitude: ").append(latitude)
+                                .append(", Longitude: ").append(longitude).append("\n").append("ID: "+id).append("\n\n");
+
+
+
+                    } while (cursor.moveToNext());
+
+                    // Set the complete result in the TextViews
+                    tvResult.setText(resultBuilder.toString());
+                    idResult.setText(idBuilder.toString());
+
                     cursor.close();
                 } else {
                     // Log the error for debugging
