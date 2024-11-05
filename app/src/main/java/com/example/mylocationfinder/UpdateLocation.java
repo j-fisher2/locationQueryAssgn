@@ -53,6 +53,10 @@ public class UpdateLocation extends AppCompatActivity {
                     double longitude = Double.parseDouble(etLongitude.getText().toString());
                     dbHelper.updateLocation(id, address, latitude, longitude);
                     showToast("Sucess!");
+                    etId.setText("");
+                    etLatitude.setText("");
+                    etLongitude.setText("");
+                    etAddress.setText("");
                 }
                 catch (NumberFormatException e){
                     showToast("Latitude, Longitude and ID must be valid numbers.");

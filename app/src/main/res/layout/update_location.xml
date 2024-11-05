@@ -33,6 +33,14 @@
             android:layout_height="wrap_content"
             android:hint="ID" />
 
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text = "This will update all fields for the location with the ID. If you are unsure of an ID, use the query feature, which will display the ID associated with a given address."
+            android:textColor="@color/red"/>
+
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
